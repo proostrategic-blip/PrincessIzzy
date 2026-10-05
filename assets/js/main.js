@@ -534,7 +534,7 @@ ${vision}
     const activeIndices = [
       17, 3, 46, 59,  // Row 1: 18 (Perfect Timing), 04 (Pure Allure), 47 (Serve Princess Feet), 60 (Billiard Sovereign [Set 2])
       4, 67, 42, 57,  // Row 2: 05 (Face Card Unmatched), 68 (Chain Harness [Set 4]), 43 (Paid Princess), 58 (Patent Boots [Set 1])
-      19, 64, 10, 50  // Row 3: 20 (Please Your Princess), 65 (Couture Staircase [Set 3]), 11 (Pink Long Toes), 51 (Good Boy)
+      19, 65, 10, 50  // Row 3: 20 (Please Your Princess), 66 (Pink Tulle Empress [Set 3]), 11 (Pink Long Toes), 51 (Good Boy)
     ];
     let deck = [];
 
@@ -612,12 +612,12 @@ ${vision}
             if (idxEl) idxEl.textContent = nextData.id;
             if (titleEl) titleEl.textContent = nextData.title;
             if (figcaption) figcaption.classList.remove('is-updating');
-          }, 350);
+          }, 300);
 
           setTimeout(() => {
             activeImg.classList.remove('is-active', 'is-incoming');
             incomingImg.classList.remove('is-incoming');
-          }, 1100);
+          }, 800);
         });
       };
       tempImg.src = nextData.src;
