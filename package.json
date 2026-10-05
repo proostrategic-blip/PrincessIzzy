@@ -1,0 +1,19 @@
+{
+  "name": "princess-izzy-official",
+  "version": "1.0.0",
+  "description": "Princess Izzy — Official Web Experience",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "princess-izzy",
+    "editorial-web-design",
+    "femdom",
+    "luxury-portfolio"
+  ],
+  "author": "Princess Izzy",
+  "license": "UNLICENSED",
+  "private": true
+}

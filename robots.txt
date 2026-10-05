@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://princess-leyla.netlify.app/sitemap.xml
