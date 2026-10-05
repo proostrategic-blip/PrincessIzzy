@@ -562,8 +562,31 @@
   <footer class="site-footer">
     <div class="container">
       <div class="footer-top">
-        <div class="footer-photo">
-          <img src="assets/img/princess-izzy-20-please-your-princess.webp" alt="Princess Izzy" loading="lazy" width="1200" height="1600">
+        <div class="footer-photo" id="footer-photo" title="Princess Izzy — Click to reveal next look" role="button" tabindex="0" aria-label="Princess Izzy photo — click to change look">
+          <img id="footer-dynamic-img" src="assets/img/princess-izzy-10-femdom-gala.webp" alt="Princess Izzy — Athens Femdom Gala Red Carpet" loading="lazy" width="1200" height="1600">
+          <script>
+            (function () {
+              try {
+                var footerImgs = [
+                  { src: 'assets/img/princess-izzy-10-femdom-gala.webp', alt: 'Princess Izzy — Athens Femdom Gala Red Carpet' },
+                  { src: 'assets/img/princess-izzy-51-good-boy.webp', alt: 'Princess Izzy — Sovereign Dominatrix' },
+                  { src: 'assets/img/princess-izzy-19-say-it-back.webp', alt: 'Princess Izzy — Black Lingerie Allure' },
+                  { src: 'assets/img/princess-izzy-34-worship-me.webp', alt: 'Princess Izzy — High Heel Domination & Leash' }
+                ];
+                var rawIdx = localStorage.getItem('izzy_footer_img_index');
+                var lastIdx = rawIdx !== null ? parseInt(rawIdx, 10) : NaN;
+                var nextIdx = isNaN(lastIdx) || lastIdx < 0 || lastIdx >= footerImgs.length
+                  ? Math.floor(Math.random() * footerImgs.length)
+                  : (lastIdx + 1) % footerImgs.length;
+                localStorage.setItem('izzy_footer_img_index', nextIdx);
+                var el = document.getElementById('footer-dynamic-img');
+                if (el) {
+                  el.src = footerImgs[nextIdx].src;
+                  el.alt = footerImgs[nextIdx].alt;
+                }
+              } catch (e) {}
+            })();
+          </script>
         </div>
         <span class="footer-brand-name">Princess Izzy</span>
         <p class="footer-motto">Russian Beauty &amp; Unforgiving Keyholder · Locktober Chastity, Gooner Control, Ball Busting, Watersports &amp; Extreme Fetish Domination</p>
