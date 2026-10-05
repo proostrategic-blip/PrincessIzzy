@@ -197,12 +197,12 @@
       const summaryText = getEl('#calc-summary-text', form);
 
       if (totalDisplay) {
-        totalDisplay.textContent = `${grandTotal}€`;
+        totalDisplay.textContent = `$${grandTotal}`;
         totalDisplay.style.transform = 'scale(1.06)';
         setTimeout(() => { totalDisplay.style.transform = 'scale(1)'; }, 140);
       }
       if (depositDisplay) {
-        depositDisplay.textContent = `${depositDue}€`;
+        depositDisplay.textContent = `$${depositDue}`;
         depositDisplay.style.transform = 'scale(1.06)';
         setTimeout(() => { depositDisplay.style.transform = 'scale(1)'; }, 140);
       }
@@ -215,8 +215,8 @@
       const hiddenTotal = getEl('#calc-hidden-total', form);
       const hiddenDeposit = getEl('#calc-hidden-deposit', form);
       const hiddenAddons = getEl('#calc-hidden-addons', form);
-      if (hiddenTotal) hiddenTotal.value = `${grandTotal}€`;
-      if (hiddenDeposit) hiddenDeposit.value = `${depositDue}€`;
+      if (hiddenTotal) hiddenTotal.value = `$${grandTotal}`;
+      if (hiddenDeposit) hiddenDeposit.value = `$${depositDue}`;
       if (hiddenAddons) hiddenAddons.value = selectedAddons.length > 0 ? selectedAddons.join(', ') : 'None';
     };
 
@@ -373,11 +373,30 @@ ${vision}
       'assets/img/princess-izzy-set2-06-manor-elegance.webp'
     ];
 
-    // Preload all 12 images into memory for instant, zero-flicker transitions
-    images.forEach((src) => {
-      const img = new Image();
-      img.src = src;
-    });
+    // Progressively prefetch hero rotation images in idle background without blocking initial paint
+    const prefetchHeroImages = () => {
+      let idx = 0;
+      const step = () => {
+        if (idx < images.length) {
+          const img = new Image();
+          img.decoding = 'async';
+          img.src = images[idx];
+          idx++;
+          setTimeout(step, 800);
+        }
+      };
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(() => setTimeout(step, 1500));
+      } else {
+        setTimeout(step, 2000);
+      }
+    };
+
+    if (document.readyState === 'complete') {
+      prefetchHeroImages();
+    } else {
+      window.addEventListener('load', prefetchHeroImages, { once: true });
+    }
 
     let currentIndex = 0; // Starts at princess-izzy-05-face-card-unmatched.webp
     let isShowingPrimary = true;
@@ -523,11 +542,48 @@ ${vision}
       { id: '76', title: 'Bouclé Sovereign', src: 'assets/img/princess-izzy-set4-10-boucle-sovereign.webp', set: 'set4' }
     ];
 
-    // Preload gallery images into memory
-    galleryPool.forEach(item => {
+    // Intelligent, progressive background prefetch for gallery pool
+    const prefetchedSet = new Set();
+    const prefetchSingle = (src) => {
+      if (!src || prefetchedSet.has(src)) return;
+      prefetchedSet.add(src);
       const img = new Image();
-      img.src = item.src;
-    });
+      img.decoding = 'async';
+      img.src = src;
+    };
+
+    // Staggered background prefetch of pool items only when gallery is near viewport or browser idle
+    let prefetchIdx = 0;
+    const prefetchBatch = () => {
+      if (prefetchIdx >= galleryPool.length) return;
+      const count = Math.min(3, galleryPool.length - prefetchIdx);
+      for (let i = 0; i < count; i++) {
+        prefetchSingle(galleryPool[prefetchIdx++].src);
+      }
+      if (prefetchIdx < galleryPool.length) {
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(() => setTimeout(prefetchBatch, 600));
+        } else {
+          setTimeout(prefetchBatch, 800);
+        }
+      }
+    };
+
+    let isGalleryVisible = false;
+    if ('IntersectionObserver' in window) {
+      const galleryObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          isGalleryVisible = entry.isIntersecting;
+          if (entry.isIntersecting) {
+            prefetchBatch();
+          }
+        });
+      }, { rootMargin: '250px' });
+      galleryObserver.observe(rail);
+    } else {
+      isGalleryVisible = true;
+      window.addEventListener('load', () => setTimeout(prefetchBatch, 3000), { once: true });
+    }
 
     // 12 active visible frames: exactly 1 per new set (Set 2, Set 4, Set 1, Set 3) and 8 original archive photos
     const initialFrameIds = ['18', '04', '47', '60', '05', '68', '43', '58', '20', '66', '11', '51'];
@@ -621,7 +677,7 @@ ${vision}
 
     // Cycle every 6.5 seconds (6500ms) with randomized organic stagger across 2-3 frames
     const cycleGallery = () => {
-      if (document.hidden) return;
+      if (document.hidden || !isGalleryVisible) return;
 
       const numToRotate = Math.min(3, Math.max(2, Math.floor(frames.length / 4)));
       const shuffledIndices = Array.from({ length: frames.length }, (_, i) => i)
@@ -631,7 +687,7 @@ ${vision}
       shuffledIndices.forEach((fIdx) => {
         const stagger = Math.floor(Math.random() * 800);
         setTimeout(() => {
-          if (!document.hidden) {
+          if (!document.hidden && isGalleryVisible) {
             transitionFrame(fIdx);
           }
         }, stagger);
@@ -640,8 +696,15 @@ ${vision}
 
     let timer = setInterval(cycleGallery, 6500);
 
-    // Interactive click: instant transition to another photo from the 54
+    // Interactive click & hover prefetch for instant transitions
     frames.forEach((frame, fIdx) => {
+      on(frame, 'pointerenter', () => {
+        const nextPoolIdx = getNextRandomImage(fIdx);
+        if (galleryPool[nextPoolIdx]) {
+          prefetchSingle(galleryPool[nextPoolIdx].src);
+        }
+      }, { passive: true });
+
       on(frame, 'click', () => {
         transitionFrame(fIdx);
         clearInterval(timer);

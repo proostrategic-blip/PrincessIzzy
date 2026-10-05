@@ -822,7 +822,7 @@ ul, ol {
   position: absolute;
   inset: 0;
   z-index: -2;
-  background-image: url("../img/la_img_26.webp");
+  background-image: url("../img/princess-izzy-age-gate.webp");
   background-size: cover;
   background-position: center 42%;
   opacity: 0.38;
@@ -1281,13 +1281,13 @@ ul, ol {
 }
 
 .photo-tile__idx {
-  color: var(--gold-primary);
+  color: #7A5B1E;
   font-weight: 600;
   flex-shrink: 0;
 }
 
 .photo-tile__title {
-  color: #C9BA9B;
+  color: #4A443B;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -1311,13 +1311,7 @@ ul, ol {
 }
 
 .archive-note::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 4px;
-  background: linear-gradient(180deg, var(--gold-primary), var(--gold-light));
+  display: none;
 }
 
 .archive-note:hover {
@@ -1752,8 +1746,8 @@ ul, ol {
   font-size: 0.82rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: #967534;
-  font-weight: 500;
+  color: #7A5B1E;
+  font-weight: 600;
 }
 
 
@@ -2890,7 +2884,7 @@ ul, ol {
 
 :root {
   --ease-snappy: cubic-bezier(0.23, 1, 0.32, 1);
-  --ease-tactile: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-tactile: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .form-label-row {
@@ -3148,9 +3142,8 @@ ul, ol {
 
 /* Boundaries & Hard Limits Box */
 .boundaries-card {
-  background: rgba(18, 14, 14, 0.75);
-  border: 1px solid rgba(212, 60, 60, 0.35);
-  border-left: 4px solid #D43C3C;
+  background: linear-gradient(135deg, rgba(212, 60, 60, 0.08) 0%, rgba(18, 14, 14, 0.85) 100%);
+  border: 1px solid rgba(212, 60, 60, 0.38);
   border-radius: var(--radius-sm);
   padding: 16px 18px;
   margin-top: 6px;
@@ -3253,5 +3246,215 @@ ul, ol {
     grid-template-columns: 1fr;
   }
 }
+
+/* ==========================================================================
+   TOUR SCHEDULE & RESIDENCY SECTION
+   ========================================================================== */
+.schedule-residency-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  background: rgba(18, 18, 21, 0.95);
+  border: 1px solid rgba(197, 160, 89, 0.4);
+  border-radius: 12px;
+  padding: clamp(22px, 3vw, 32px);
+  margin-bottom: 28px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.schedule-residency__info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  flex: 1;
+  min-width: 260px;
+}
+
+.schedule-residency__tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #DFBF7A;
+}
+
+.schedule-residency__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.5vw, 1.55rem);
+  color: #FFFFFF;
+  margin-bottom: 2px;
+  letter-spacing: 0.02em;
+}
+
+.schedule-residency__desc {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+}
+
+.schedule-residency__badge {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #0C0C0D;
+  background: linear-gradient(135deg, #ECC880 0%, #C5A059 100%);
+  border: 1px solid rgba(255, 235, 175, 0.7);
+  padding: 7px 18px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.schedule-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.schedule-stop-card {
+  background: rgba(14, 14, 16, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 10px;
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+  transition: transform 0.28s cubic-bezier(0.23, 1, 0.32, 1),
+              border-color 0.28s ease,
+              box-shadow 0.28s ease;
+}
+
+.schedule-stop-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(197, 160, 89, 0.45);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 16px rgba(197, 160, 89, 0.1);
+}
+
+.schedule-stop-card--highlight {
+  border-color: rgba(197, 160, 89, 0.55);
+  background: rgba(22, 20, 24, 0.95);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 14px rgba(197, 160, 89, 0.1);
+}
+
+.schedule-stop-card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.schedule-stop-card__city {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: #FFFFFF;
+  letter-spacing: 0.02em;
+}
+
+.schedule-stop-card__tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #DFBF7A;
+}
+
+.schedule-stop-card__dates {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: #ECC880;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.schedule-stop-card__sub {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.4;
+}
+
+.schedule-footer-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  background: rgba(18, 18, 21, 0.92);
+  border: 1px solid rgba(197, 160, 89, 0.35);
+  border-radius: 10px;
+  padding: 18px 24px;
+}
+
+.schedule-footer-bar__text {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ==========================================================================
+   CUSTOMS & DIRECT EMAIL SPOTLIGHT
+   ========================================================================== */
+.customs-highlight-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  background: rgba(18, 18, 21, 0.95);
+  border: 1px solid rgba(197, 160, 89, 0.45);
+  border-radius: 12px;
+  padding: clamp(24px, 3.5vw, 36px);
+  margin-top: 32px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.customs-highlight-box h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.5vw, 1.55rem);
+  color: #ECC880;
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+}
+
+.customs-highlight-box p {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 640px;
+  line-height: 1.55;
+}
+
+@media (max-width: 640px) {
+  .schedule-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .schedule-residency-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .schedule-footer-bar {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    gap: 14px;
+  }
+  .schedule-footer-bar .btn {
+    width: 100%;
+  }
+  .customs-highlight-box {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+  }
+  .customs-highlight-box .btn {
+    width: 100%;
+  }
+}
+
 
 
