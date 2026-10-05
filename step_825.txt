@@ -1,0 +1,119 @@
+Here is the tailored **Tally AI Prompt** directly adapted from Princess Izzy's real booking sheets, pricing, boundaries, and travel rules.
+
+It organizes all her rules, session tiers, add-ons, and travel into a clean, modern flow that is **easy to use, elegant, and not overwhelming**.
+
+---
+
+### 📋 Copy & Paste Prompt for Tally AI
+
+```text
+Create an elegant, high-end "Session Request & Booking Form" for Princess Izzy (professional dominatrix). 
+
+Style: Clean, luxury, streamlined, not overwhelming. 
+
+Include the following sections and fields:
+
+--- HEADER ---
+Title: "Session Request Form"
+Subtitle: "Read all rules before submitting. Upfront deposit required. Incomplete or disrespectful requests will be ignored."
+
+--- SECTION 1: YOUR CONTACT & LOCATION ---
+1. Email Address (Email field, Required)
+   - Label: "Your Email Address"
+   - Placeholder: "Where Princess Izzy will reply..."
+
+2. Telegram Handle (Short text, Required)
+   - Label: "Telegram Username (@handle)"
+   - Placeholder: "e.g. @yourusername (Reach out is via Email or Telegram only)"
+
+3. Booking Location / City (Single Choice or Dropdown, Required)
+   - Label: "Where are you booking for?"
+   - Options:
+     • Metro Detroit (Base location - Hosts Tue & Wed)
+     • Tour: Chicago, IL
+     • Tour: DMV / Arlington, VA
+     • Tour: Baltimore, MD
+     • Tour: NYC New York
+     • Tour: Boston, MA
+     • Tour: London, UK
+     • Tour: Saint Petersburg, FL (FetishCon)
+     • Tour: Athens, Greece
+     • FMTY (Fly Me To You - Custom travel)
+     • Virtual / Online Domination (Video Call / Chat)
+
+--- SECTION 2: DATE & TIME ---
+4. Preferred Date & Time (Date + Time field, Required)
+   - Label: "What date and time work best for you?"
+
+5. Alternative Date / Time (Short text, Optional)
+   - Label: "Alternative date & time (if primary is unavailable)"
+
+--- SECTION 3: SESSION TYPE & DURATION ---
+6. Session Category (Single Choice, Required)
+   - Label: "Select your session type:"
+   - Options:
+     • Standard Domination (Body worship, CBT, humiliation, facesitting, feet) — 30 min (350€)
+     • Standard Domination — 1 hour (450€)
+     • 2-Hour In-Depth Domination (900€)
+     • 3-Hour Complete Immersion (1,300€)
+     • Scat Session — 1 hour (800€)
+     • Fart / Scent Session — 1 hour (900€)
+     • Cash Meet / Tribute Delivery (500€ min)
+     • Collab / Model Shoot (200€–300€ / hr)
+     • High-End Dinner Date (300€)
+
+7. Optional Session Add-Ons (Multiple Choice / Checkboxes, Optional)
+   - Label: "Select any desired add-ons:"
+   - Options:
+     • Scat Add-on (+300€)
+     • Fart / Scent Add-on (+400€)
+     • Worn Lingerie (+100€)
+     • Nude (+200€)
+     • Stinky Socks / Feet (+50€)
+     • Ass / Tit Job (+300€)
+     • 24-Hour Short Notice (+100€)
+     • Specific Outfit Request (+50€)
+     • After-Hours / Past 9 PM (+150€)
+
+8. Session Vision & Desired Fetishes (Long text, Required)
+   - Label: "Describe your session in detail:"
+   - Placeholder: "Tell me what you crave: CBT, humiliation, feet, specific commands, experience level, etc. Be detailed."
+
+--- SECTION 4: DEPOSITS & PAYMENT ---
+9. Payment Method for Deposit (Single Choice, Required)
+   - Label: "How will you pay your 50% deposit?"
+   - Help text: "Deposits are strictly 50% upfront to lock the date, remaining 50% at session time. Non-refundable."
+   - Options:
+     • Cash App (missmorgan0809 - Preferred)
+     • Venmo (morg8004)
+     • PayPal (@goddessizzyb)
+     • Apple Pay (740-260-0002 — Do not call, calls get blocked)
+     • Cash (For verified meetups / meets)
+
+--- SECTION 5: BOUNDARIES & AGREEMENT ---
+10. Strict Boundaries & Terms Agreement (Checkbox, Required)
+    - Label: "I understand and solemnly agree:
+    ✓ STRICTLY NO ORAL (on either party), NO SEX, NO KISSING.
+    ✓ NO raceplay, NO animals, NO porn/XXX, NO cuckold requests.
+    ✓ She is NOT full-service.
+    ✓ 50% deposit is mandatory and non-refundable.
+    ✓ I am 18+ and ready to send my deposit immediately upon approval."
+
+Submit Button: "Submit Session Request"
+```
+
+---
+
+### 💡 Why this format works better than the old screenshots:
+1. **Not Overwhelming**: Instead of long walls of unformatted text, the pricing, add-ons, and travel cities are cleanly organized into dropdowns and checkboxes.
+2. **Reaching Out**: Collects **Email + Telegram only**, matching your requirement.
+3. **Firm Boundaries**: The boundaries (No sex, no oral, no kissing, not full service) are clearly enforced in the mandatory agreement checkbox.
+4. **Deposit Ready**: Clear 50% deposit options upfront with her real payment handles (Cash App, Venmo, PayPal, Apple Pay).
+
+---
+
+### 🚀 Next Step:
+1. Paste the prompt above into [tally.so](https://tally.so) (*Create with AI*).
+2. Set Theme to **Dark mode** with Gold accent (`#ECC880`).
+3. Click **Publish** and copy your form link (e.g. `https://tally.so/r/wXXXXX`).
+4. Paste the link here, and I will embed it directly into the website!
