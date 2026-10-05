@@ -23,25 +23,11 @@
     const enterBtn = getEl('[data-age-enter]', gate);
     const exitBtn = getEl('[data-age-exit]', gate);
     const gatePanel = getEl('.age-gate__panel', gate);
-    const gateImages = [
-      'princess-izzy-05-face-card-unmatched.webp',
-      'princess-izzy-43-paid-princess.webp',
-      'princess-izzy-20-please-your-princess.webp',
-      'princess-izzy-09-russian-allure.webp',
-      'princess-izzy-15-soft-soles.webp'
-    ];
-    let gateImageIndex = 0;
-    const setGateImage = () => {
-      if (!gatePanel) return;
-      const file = gateImages[gateImageIndex];
-      gatePanel.style.setProperty('--age-gate-image', `url("../img/${file}")`);
-      gatePanel.style.backgroundImage = `linear-gradient(180deg, rgba(10, 10, 11, 0.12) 0%, rgba(10, 10, 11, 0.48) 40%, rgba(10, 10, 11, 0.92) 70%, rgba(10, 10, 11, 0.98) 100%), url("assets/img/${file}")`;
-    };
-    setGateImage();
-    const gateImageTimer = window.setInterval(() => {
-      gateImageIndex = (gateImageIndex + 1) % gateImages.length;
-      setGateImage();
-    }, 6000);
+    const gateImage = 'princess-izzy-02-bare-natural-toenails.webp';
+    if (gatePanel) {
+      gatePanel.style.setProperty('--age-gate-image', `url("../img/${gateImage}")`);
+      gatePanel.style.backgroundImage = `linear-gradient(180deg, rgba(10, 10, 11, 0.12) 0%, rgba(10, 10, 11, 0.48) 40%, rgba(10, 10, 11, 0.92) 70%, rgba(10, 10, 11, 0.98) 100%), url("assets/img/${gateImage}")`;
+    }
 
     const isVerified = () => {
       try {
@@ -60,7 +46,6 @@
     if (isVerified()) {
       document.documentElement.classList.add('age-verified');
       gate.hidden = true;
-      window.clearInterval(gateImageTimer);
       return;
     }
 
@@ -72,11 +57,9 @@
       document.cookie = `izzy_age_verified_v1=1; max-age=${TTL_DAYS * 86400}; path=/; SameSite=Lax`;
       document.documentElement.classList.add('age-verified');
       gate.hidden = true;
-      window.clearInterval(gateImageTimer);
     });
 
     on(exitBtn, 'click', () => {
-      window.clearInterval(gateImageTimer);
       window.location.href = 'https://www.google.com';
     });
   };
