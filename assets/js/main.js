@@ -464,7 +464,6 @@ ${vision}
       { id: '21', title: 'Daily Reminder', src: 'assets/img/princess-izzy-21-daily-reminder.webp' },
       { id: '22', title: 'Direct Control', src: 'assets/img/princess-izzy-22-direct-control.webp' },
       { id: '23', title: 'Sweet Indulgence', src: 'assets/img/princess-izzy-23-sweet-indulgence.webp' },
-      { id: '24', title: 'Submissive View', src: 'assets/img/princess-izzy-24-submissive-view.webp' },
       { id: '25', title: 'White Pedicure', src: 'assets/img/princess-izzy-25-white-pedicure.webp' },
       { id: '26', title: 'Bedroom Queen', src: 'assets/img/princess-izzy-26-bedroom-queen.webp' },
       { id: '27', title: 'Sensory Treat', src: 'assets/img/princess-izzy-27-sensory-treat.webp' },
@@ -531,11 +530,8 @@ ${vision}
     });
 
     // 12 active visible frames: exactly 1 per new set (Set 2, Set 4, Set 1, Set 3) and 8 original archive photos
-    const activeIndices = [
-      17, 3, 46, 59,  // Row 1: 18 (Perfect Timing), 04 (Pure Allure), 47 (Serve Princess Feet), 60 (Billiard Sovereign [Set 2])
-      4, 67, 42, 57,  // Row 2: 05 (Face Card Unmatched), 68 (Chain Harness [Set 4]), 43 (Paid Princess), 58 (Patent Boots [Set 1])
-      19, 65, 10, 50  // Row 3: 20 (Please Your Princess), 66 (Pink Tulle Empress [Set 3]), 11 (Pink Long Toes), 51 (Good Boy)
-    ];
+    const initialFrameIds = ['18', '04', '47', '60', '05', '68', '43', '58', '20', '66', '11', '51'];
+    const activeIndices = initialFrameIds.map((id) => galleryPool.findIndex((item) => item.id === id));
     let deck = [];
 
     // Tracks sets currently visible in the gallery so no set ever has more than 1 photo visible at a time
