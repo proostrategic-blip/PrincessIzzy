@@ -2109,8 +2109,8 @@ ul, ol {
   min-height: 52px;
   line-height: 1.35;
   text-align: center;
-  white-space: normal;
-  overflow-wrap: anywhere;
+  white-space: nowrap;
+  overflow-wrap: normal;
   background: #0C0C0D;
   color: #DFBF7A;
   border: 1px solid rgba(212, 175, 55, 0.45);
@@ -2746,3 +2746,375 @@ ul, ol {
     background-position: center top, center 18%;
   }
 }
+
+/* ==========================================================================
+   ADVANCED BOOKING FORM & INTERACTIVE CALCULATOR (EMIL DESIGN-ENG)
+   ========================================================================== */
+
+:root {
+  --ease-snappy: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-tactile: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.form-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+
+.form-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 999px;
+  line-height: 1;
+  transition: all 180ms var(--ease-snappy);
+}
+
+.form-badge--required {
+  background: rgba(236, 200, 128, 0.12);
+  color: #ECC880;
+  border: 1px solid rgba(236, 200, 128, 0.35);
+}
+
+.form-badge--required::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #ECC880;
+  box-shadow: 0 0 6px #ECC880;
+}
+
+.form-badge--optional {
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Animated Input Focus & Error States */
+.form-input,
+.form-select,
+.form-textarea {
+  transition: border-color 180ms var(--ease-snappy), box-shadow 180ms var(--ease-snappy), background-color 180ms var(--ease-snappy), transform 120ms var(--ease-snappy);
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #ECC880;
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.25), 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.form-field-invalid {
+  animation: fieldShake 320ms var(--ease-snappy);
+  border-color: #E55353 !important;
+  box-shadow: 0 0 0 3px rgba(229, 83, 83, 0.25) !important;
+}
+
+@keyframes fieldShake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+/* Interactive Add-on Chips Grid */
+.addon-chips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.addon-chip {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  background: #FAF8F5;
+  border: 1px solid rgba(20, 19, 18, 0.14);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  user-select: none;
+  transition: all 180ms var(--ease-snappy);
+}
+
+.addon-chip input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.addon-chip:hover {
+  background: #FFFFFF;
+  border-color: rgba(197, 160, 89, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.addon-chip:active {
+  transform: scale(0.97);
+}
+
+.addon-chip.is-active {
+  background: #141416;
+  border-color: #ECC880;
+  box-shadow: 0 0 0 1px #ECC880, 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.addon-chip__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.addon-chip__name {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: color 180ms var(--ease-snappy);
+}
+
+.addon-chip.is-active .addon-chip__name {
+  color: #FFFFFF;
+}
+
+.addon-chip__price {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #967534;
+  transition: color 180ms var(--ease-snappy);
+}
+
+.addon-chip.is-active .addon-chip__price {
+  color: #ECC880;
+}
+
+.addon-chip__indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(20, 19, 18, 0.25);
+  background: transparent;
+  color: transparent;
+  font-size: 0.7rem;
+  transition: all 180ms var(--ease-snappy);
+  flex-shrink: 0;
+}
+
+.addon-chip.is-active .addon-chip__indicator {
+  border-color: #ECC880;
+  background: #ECC880;
+  color: #0C0C0D;
+  font-weight: 700;
+}
+
+/* Dynamic Live Deposit Calculator */
+.booking-calculator {
+  background: linear-gradient(135deg, rgba(20, 20, 24, 0.95) 0%, rgba(12, 12, 14, 0.98) 100%);
+  border: 1px solid rgba(236, 200, 128, 0.35);
+  border-radius: var(--radius-md);
+  padding: 20px 24px;
+  color: #FFFFFF;
+  margin-top: 8px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25), 0 0 24px rgba(197, 160, 89, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.booking-calculator::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ECC880, transparent);
+}
+
+.calculator-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 14px;
+}
+
+.calculator-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  color: #ECC880;
+  text-transform: uppercase;
+}
+
+.calculator-selected-service {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: var(--font-mono);
+}
+
+.calculator-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: center;
+}
+
+.metric-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.metric-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.metric-value {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  line-height: 1.1;
+  font-weight: 700;
+  color: #FFFFFF;
+  transition: transform 180ms var(--ease-snappy);
+}
+
+.metric-value--deposit {
+  color: #ECC880;
+}
+
+.metric-sub {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* Boundaries & Hard Limits Box */
+.boundaries-card {
+  background: rgba(18, 14, 14, 0.75);
+  border: 1px solid rgba(212, 60, 60, 0.35);
+  border-left: 4px solid #D43C3C;
+  border-radius: var(--radius-sm);
+  padding: 16px 18px;
+  margin-top: 6px;
+}
+
+.boundaries-card__title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #FF7B7B;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.boundaries-card__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.5;
+}
+
+.boundaries-card__list li {
+  position: relative;
+  padding-left: 16px;
+}
+
+.boundaries-card__list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #D43C3C;
+  font-weight: bold;
+}
+
+/* Animated Submit Button Feedback */
+.btn-submit-booking {
+  position: relative;
+  overflow: hidden;
+  transition: transform 150ms var(--ease-snappy), background 200ms var(--ease-snappy), box-shadow 200ms var(--ease-snappy);
+}
+
+.btn-submit-booking:active {
+  transform: scale(0.98);
+}
+
+.btn-submit-booking.is-submitting {
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.btn-submit-booking.is-submitting .btn-text {
+  visibility: hidden;
+}
+
+.btn-submit-booking.is-submitting::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  left: 50%;
+  margin: -10px 0 0 -10px;
+  border: 2px solid rgba(236, 200, 128, 0.3);
+  border-top-color: #ECC880;
+  border-radius: 50%;
+  animation: spinnerRotate 600ms linear infinite;
+}
+
+@keyframes spinnerRotate {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 600px) {
+  .addon-chips-grid {
+    grid-template-columns: 1fr;
+  }
+  .calculator-metrics {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+.booking-actions-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+@media (max-width: 500px) {
+  .booking-actions-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+

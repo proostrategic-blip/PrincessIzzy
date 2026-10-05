@@ -175,54 +175,189 @@
   // --------------------------------------------------------------------------
   // 4. BOOKING SYSTEM & X (TWITTER) DM ROUTING
   // --------------------------------------------------------------------------
+  // --------------------------------------------------------------------------
+  // 4. ADVANCED BOOKING SYSTEM & LIVE DEPOSIT CALCULATOR
+  // --------------------------------------------------------------------------
   const initBookingSystem = () => {
     const form = getEl('#booking-form');
     const successBanner = getEl('#booking-success');
     if (!form) return;
 
+    // Interactive Add-on Chips & Live Calculator
+    const serviceSelect = getEl('#book-service', form);
+    const addonCheckboxes = form.querySelectorAll('.addon-chip input[type="checkbox"]');
+
+    const updateCalculator = () => {
+      const selectedOption = serviceSelect ? serviceSelect.options[serviceSelect.selectedIndex] : null;
+      const basePrice = parseInt(selectedOption?.getAttribute('data-price') || '450', 10);
+      const serviceName = selectedOption ? selectedOption.text.split('(')[0].trim() : 'Standard Domination';
+
+      let addonTotal = 0;
+      const selectedAddons = [];
+      addonCheckboxes.forEach((checkbox) => {
+        const chip = checkbox.closest('.addon-chip');
+        if (checkbox.checked) {
+          chip?.classList.add('is-active');
+          const price = parseInt(checkbox.getAttribute('data-addon-price') || '0', 10);
+          addonTotal += price;
+          selectedAddons.push(checkbox.value);
+        } else {
+          chip?.classList.remove('is-active');
+        }
+      });
+
+      const grandTotal = basePrice + addonTotal;
+      const depositDue = Math.round(grandTotal * 0.5);
+
+      const totalDisplay = getEl('#calc-total-display', form);
+      const depositDisplay = getEl('#calc-deposit-display', form);
+      const summaryText = getEl('#calc-summary-text', form);
+
+      if (totalDisplay) {
+        totalDisplay.textContent = `${grandTotal}€`;
+        totalDisplay.style.transform = 'scale(1.06)';
+        setTimeout(() => { totalDisplay.style.transform = 'scale(1)'; }, 140);
+      }
+      if (depositDisplay) {
+        depositDisplay.textContent = `${depositDue}€`;
+        depositDisplay.style.transform = 'scale(1.06)';
+        setTimeout(() => { depositDisplay.style.transform = 'scale(1)'; }, 140);
+      }
+      if (summaryText) {
+        summaryText.textContent = selectedAddons.length > 0
+          ? `${serviceName} + ${selectedAddons.length} Add-on${selectedAddons.length > 1 ? 's' : ''}`
+          : serviceName;
+      }
+
+      const hiddenTotal = getEl('#calc-hidden-total', form);
+      const hiddenDeposit = getEl('#calc-hidden-deposit', form);
+      const hiddenAddons = getEl('#calc-hidden-addons', form);
+      if (hiddenTotal) hiddenTotal.value = `${grandTotal}€`;
+      if (hiddenDeposit) hiddenDeposit.value = `${depositDue}€`;
+      if (hiddenAddons) hiddenAddons.value = selectedAddons.length > 0 ? selectedAddons.join(', ') : 'None';
+    };
+
+    if (serviceSelect) {
+      on(serviceSelect, 'change', updateCalculator);
+    }
+
+    addonCheckboxes.forEach((checkbox) => {
+      on(checkbox, 'change', updateCalculator);
+    });
+
+    // Run once on load
+    updateCalculator();
+
+    // Form Submission & Validation with Emil Kowalski Micro-Animations
     on(form, 'submit', (e) => {
       e.preventDefault();
-      const btn = form.querySelector('button[type="submit"]');
-      const originalText = btn.textContent;
 
-      const name = getEl('#book-name', form)?.value?.trim() || 'Too shy to say';
-      const contact = getEl('#book-contact', form)?.value?.trim() || 'Not supplied';
-      const service = getEl('#book-service', form)?.value || 'Custom request';
-      const budget = getEl('#book-budget', form)?.value || 'Ask me what you can afford';
-      const platform = getEl('#book-platform', form)?.value || 'Tipfunder';
-      const details = getEl('#book-details', form)?.value?.trim() || 'No details. Make me ask.';
+      const requiredInputs = form.querySelectorAll('[required]');
+      let firstInvalid = null;
 
-      const briefText = `👑 PRINCESS IZZY — BOOKING & DEVOTION PROTOCOL
+      requiredInputs.forEach((input) => {
+        input.classList.remove('form-field-invalid');
+        const isCheckbox = input.type === 'checkbox';
+        const isBlank = isCheckbox ? !input.checked : !input.value.trim();
+
+        if (isBlank) {
+          input.classList.add('form-field-invalid');
+          setTimeout(() => input.classList.remove('form-field-invalid'), 900);
+          if (!firstInvalid) firstInvalid = input;
+        }
+      });
+
+      if (firstInvalid) {
+        firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        firstInvalid.focus();
+        showToast('Please complete all required fields and accept boundaries.');
+        return;
+      }
+
+      const btn = getEl('#btn-submit-booking', form);
+      if (btn) btn.classList.add('is-submitting');
+
+      // Construct readable summary for devotion brief & email
+      const formData = new FormData(form);
+      const email = formData.get('email') || '';
+      const telegram = formData.get('telegram') || '';
+      const alias = formData.get('alias') || 'Anonymous Devotee';
+      const location = formData.get('location') || '';
+      const date = formData.get('preferred_date') || '';
+      const time = formData.get('preferred_time') || '';
+      const altTime = formData.get('alt_date_time') || 'None';
+      const sessionType = formData.get('session_type') || '';
+      const addons = formData.get('selected_addons') || 'None';
+      const total = formData.get('estimated_total') || '';
+      const deposit = formData.get('mandatory_deposit') || '';
+      const paymentMethod = formData.get('deposit_payment_method') || '';
+      const vision = formData.get('session_vision') || '';
+
+      const briefText = `👑 PRINCESS IZZY — OFFICIAL SESSION REQUEST
 ========================================
-• Devotee Alias: ${name}
-• Attached Username: ${contact}
-• Requested Service: ${service}
-• Payment Status: Upfront payment accompanied
-• Budget Allocation: ${budget}
-• Payment Platform: ${platform}
-• Confession / Details: ${details}
+• Devotee: ${alias}
+• Email: ${email}
+• Telegram: ${telegram}
+• Location / City: ${location}
+• Preferred Date & Time: ${date} at ${time}
+• Alternative Time: ${altTime}
 ----------------------------------------
-* Verified: Client agrees that upfront payment must accompany this booking with their attached username.`;
+• Requested Session: ${sessionType}
+• Selected Add-ons: ${addons}
+• Estimated Total Cost: ${total}
+• Mandatory 50% Deposit: ${deposit}
+• Deposit Payment Channel: ${paymentMethod}
+----------------------------------------
+• Desires & Fetishes:
+${vision}
+----------------------------------------
+✓ Boundaries & 50% deposit policy acknowledged.`;
 
-      btn.textContent = 'Copying Your Confession...';
-      btn.disabled = true;
+      // Copy brief to devotee's clipboard automatically
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(briefText).catch(() => {});
+      }
 
-      // Copy brief to clipboard
-      navigator.clipboard.writeText(briefText).then(() => {
-        showToast('Devotion application copied. Now send it.');
-      }).catch(() => {
-        showToast('Opening Telegram. Try not to embarrass yourself.');
-      }).finally(() => {
-        setTimeout(() => {
-          if (successBanner) {
-            successBanner.style.display = 'block';
-            successBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-          }
-          btn.textContent = originalText;
-          btn.disabled = false;
-          // Open Telegram in new tab
-          window.open('https://t.me/princessizzy290', '_blank', 'noopener,noreferrer');
-        }, 600);
+      // Send to FormSubmit AJAX endpoint (Delivers directly to izzyb29092@gmail.com)
+      const payload = {
+        _subject: `👑 New Session Booking: ${alias} (${location})`,
+        Email: email,
+        Telegram: telegram,
+        Alias: alias,
+        Location: location,
+        Preferred_Date: date,
+        Preferred_Time: time,
+        Alternative_Time: altTime,
+        Session_Type: sessionType,
+        Selected_Addons: addons,
+        Estimated_Total: total,
+        Mandatory_50pct_Deposit: deposit,
+        Payment_Method: paymentMethod,
+        Session_Desires: vision,
+        Terms_Agreed: "YES - All boundaries & 50% deposit accepted"
+      };
+
+      fetch('https://formsubmit.co/ajax/izzyb29092@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      })
+      .then((res) => res.json())
+      .then(() => {
+        showToast('👑 Request submitted to Princess Izzy.');
+      })
+      .catch(() => {
+        showToast('Request recorded & copied to clipboard.');
+      })
+      .finally(() => {
+        if (btn) btn.classList.remove('is-submitting');
+        if (successBanner) {
+          successBanner.style.display = 'block';
+          successBanner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
       });
     });
   };
