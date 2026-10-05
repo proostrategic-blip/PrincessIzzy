@@ -23,7 +23,7 @@
     const enterBtn = getEl('[data-age-enter]', gate);
     const exitBtn = getEl('[data-age-exit]', gate);
     const gatePanel = getEl('.age-gate__panel', gate);
-    const gateImage = 'princess-izzy-02-bare-natural-toenails.webp';
+    const gateImage = 'princess-izzy-set1-02-vinyl-throne.webp';
     if (gatePanel) {
       gatePanel.style.setProperty('--age-gate-image', `url("../img/${gateImage}")`);
       gatePanel.style.backgroundImage = `linear-gradient(180deg, rgba(10, 10, 11, 0.12) 0%, rgba(10, 10, 11, 0.48) 40%, rgba(10, 10, 11, 0.92) 70%, rgba(10, 10, 11, 0.98) 100%), url("assets/img/${gateImage}")`;
@@ -353,20 +353,24 @@ ${vision}
     const secondaryImg = getEl('#heroSecondaryImg');
     if (!primaryImg || !secondaryImg) return;
 
-    // The curated images specified
+    // Curated priority professional set images (Set 1, 2, 3, 4)
     const images = [
-      'assets/img/princess-izzy-05-face-card-unmatched.webp',
-      'assets/img/princess-izzy-43-paid-princess.webp',
-      'assets/img/princess-izzy-20-please-your-princess.webp',
-      'assets/img/princess-izzy-09-russian-allure.webp',
-      'assets/img/princess-izzy-11-pink-long-toes.webp',
-      'assets/img/princess-izzy-15-soft-soles.webp',
-      'assets/img/princess-izzy-23-sweet-indulgence.webp',
-      'assets/img/princess-izzy-27-sensory-treat.webp',
-      'assets/img/princess-izzy-33-arch-perfection.webp',
-      'assets/img/princess-izzy-38-human-furniture.webp',
-      'assets/img/princess-izzy-46-hotel-retreat.webp',
-      'assets/img/princess-izzy-50-luxury-blonde.webp'
+      'assets/img/princess-izzy-set4-03-red-bottoms.webp',
+      'assets/img/princess-izzy-set2-02-billiard-sovereign.webp',
+      'assets/img/princess-izzy-set3-02-pink-tulle-empress.webp',
+      'assets/img/princess-izzy-set1-01-patent-mirror.webp',
+      'assets/img/princess-izzy-set4-01-boucle-dominance.webp',
+      'assets/img/princess-izzy-set2-01-bronze-chesterfield.webp',
+      'assets/img/princess-izzy-set1-02-vinyl-throne.webp',
+      'assets/img/princess-izzy-set4-02-chain-harness.webp',
+      'assets/img/princess-izzy-set2-03-satin-command.webp',
+      'assets/img/princess-izzy-set4-04-sofa-allure.webp',
+      'assets/img/princess-izzy-set1-03-neon-crop.webp',
+      'assets/img/princess-izzy-set4-10-boucle-sovereign.webp',
+      'assets/img/princess-izzy-set2-04-lounge-authority.webp',
+      'assets/img/princess-izzy-set4-06-amber-glow.webp',
+      'assets/img/princess-izzy-set1-04-boots-domination.webp',
+      'assets/img/princess-izzy-set2-06-manor-elegance.webp'
     ];
 
     // Preload all 12 images into memory for instant, zero-flicker transitions
@@ -490,23 +494,62 @@ ${vision}
       { id: '51', title: 'Good Boy', src: 'assets/img/princess-izzy-51-good-boy.webp' },
       { id: '52', title: 'Living Room Takeover', src: 'assets/img/princess-izzy-52-living-room-takeover.webp' },
       { id: '53', title: 'High Arches', src: 'assets/img/princess-izzy-53-high-arches.webp' },
-      { id: '54', title: 'Total Surrender', src: 'assets/img/princess-izzy-54-total-surrender.webp' }
+      { id: '54', title: 'Total Surrender', src: 'assets/img/princess-izzy-54-total-surrender.webp' },
+      // New Professional Shoot Sets (Priority additions)
+      // Set 1 — Vinyl & Neon Studio
+      { id: '55', title: 'Patent Bodysuit & Mirror', src: 'assets/img/princess-izzy-set1-01-patent-mirror.webp', set: 'set1' },
+      { id: '56', title: 'Vinyl Throne & Riding Crop', src: 'assets/img/princess-izzy-set1-02-vinyl-throne.webp', set: 'set1' },
+      { id: '57', title: 'Neon Studio Crop', src: 'assets/img/princess-izzy-set1-03-neon-crop.webp', set: 'set1' },
+      { id: '58', title: 'Patent Boots Domination', src: 'assets/img/princess-izzy-set1-04-boots-domination.webp', set: 'set1' },
+      // Set 2 — Bronze Satin Club
+      { id: '59', title: 'Bronze Chesterfield', src: 'assets/img/princess-izzy-set2-01-bronze-chesterfield.webp', set: 'set2' },
+      { id: '60', title: 'Billiard Sovereign', src: 'assets/img/princess-izzy-set2-02-billiard-sovereign.webp', set: 'set2' },
+      { id: '61', title: 'Satin Command', src: 'assets/img/princess-izzy-set2-03-satin-command.webp', set: 'set2' },
+      { id: '62', title: 'Private Lounge Authority', src: 'assets/img/princess-izzy-set2-04-lounge-authority.webp', set: 'set2' },
+      { id: '63', title: 'Club Devotion', src: 'assets/img/princess-izzy-set2-05-club-devotion.webp', set: 'set2' },
+      { id: '64', title: 'Manor Elegance', src: 'assets/img/princess-izzy-set2-06-manor-elegance.webp', set: 'set2' },
+      // Set 3 — Pink Tulle Empress
+      { id: '65', title: 'Couture Staircase', src: 'assets/img/princess-izzy-set3-01-couture-staircase-wide.webp', set: 'set3' },
+      { id: '66', title: 'Pink Tulle Empress', src: 'assets/img/princess-izzy-set3-02-pink-tulle-empress.webp', set: 'set3' },
+      // Set 4 — Bouclé Lounge & Red Bottoms
+      { id: '67', title: 'Bouclé Dominance', src: 'assets/img/princess-izzy-set4-01-boucle-dominance.webp', set: 'set4' },
+      { id: '68', title: 'Chain Harness Allure', src: 'assets/img/princess-izzy-set4-02-chain-harness.webp', set: 'set4' },
+      { id: '69', title: 'Red Bottom Stilettos', src: 'assets/img/princess-izzy-set4-03-red-bottoms.webp', set: 'set4' },
+      { id: '70', title: 'Sofa Intimacy', src: 'assets/img/princess-izzy-set4-04-sofa-allure.webp', set: 'set4' },
+      { id: '71', title: 'Lounge Repose Wide', src: 'assets/img/princess-izzy-set4-05-lounge-repose-wide.webp', set: 'set4' },
+      { id: '72', title: 'Amber Glow', src: 'assets/img/princess-izzy-set4-06-amber-glow.webp', set: 'set4' },
+      { id: '73', title: 'Velvet Allure', src: 'assets/img/princess-izzy-set4-07-velvet-intimacy.webp', set: 'set4' },
+      { id: '74', title: 'Heel Arch Perfection', src: 'assets/img/princess-izzy-set4-08-heel-arch.webp', set: 'set4' },
+      { id: '75', title: 'Gilded Seduction', src: 'assets/img/princess-izzy-set4-09-gilded-seduction.webp', set: 'set4' },
+      { id: '76', title: 'Bouclé Sovereign', src: 'assets/img/princess-izzy-set4-10-boucle-sovereign.webp', set: 'set4' }
     ];
 
-    // Preload all 54 gallery images into memory
+    // Preload gallery images into memory
     galleryPool.forEach(item => {
       const img = new Image();
       img.src = item.src;
     });
 
+    // 12 active visible frames: exactly 1 per new set (Set 2, Set 4, Set 1, Set 3) and 8 original archive photos
     const activeIndices = [
-      17, 3, 46, 9,   // Row 1: 18 (Perfect Timing), 04 (Pure Allure), 47 (Serve Princess Feet), 10 (Femdom Gala)
-      4, 32, 42, 14,  // Row 2: 05 (Face Card Unmatched), 33 (Arch Perfection), 43 (Paid Princess), 15 (Soft Soles)
-      19, 37, 10, 50  // Row 3: 20 (Please Your Princess), 38 (Human Furniture), 11 (Pink Long Toes), 51 (Good Boy)
+      17, 3, 46, 59,  // Row 1: 18 (Perfect Timing), 04 (Pure Allure), 47 (Serve Princess Feet), 60 (Billiard Sovereign [Set 2])
+      4, 67, 42, 57,  // Row 2: 05 (Face Card Unmatched), 68 (Chain Harness [Set 4]), 43 (Paid Princess), 58 (Patent Boots [Set 1])
+      19, 64, 10, 50  // Row 3: 20 (Please Your Princess), 65 (Couture Staircase [Set 3]), 11 (Pink Long Toes), 51 (Good Boy)
     ];
     let deck = [];
 
-    const getNextRandomImage = () => {
+    // Tracks sets currently visible in the gallery so no set ever has more than 1 photo visible at a time
+    const getActiveSets = (excludeFrameIndex = -1) => {
+      const activeSets = new Set();
+      activeIndices.forEach((poolIdx, fIdx) => {
+        if (fIdx !== excludeFrameIndex && galleryPool[poolIdx]?.set) {
+          activeSets.add(galleryPool[poolIdx].set);
+        }
+      });
+      return activeSets;
+    };
+
+    const getNextRandomImage = (frameIndex) => {
       if (deck.length === 0) {
         deck = Array.from({ length: galleryPool.length }, (_, i) => i);
         for (let i = deck.length - 1; i > 0; i--) {
@@ -514,6 +557,21 @@ ${vision}
           [deck[i], deck[j]] = [deck[j], deck[i]];
         }
       }
+
+      const activeSets = getActiveSets(frameIndex);
+
+      // Pick a candidate that isn't currently visible AND doesn't duplicate a visible set
+      for (let i = 0; i < deck.length; i++) {
+        const poolIdx = deck[i];
+        if (!activeIndices.includes(poolIdx)) {
+          const candidate = galleryPool[poolIdx];
+          if (!candidate.set || !activeSets.has(candidate.set)) {
+            return deck.splice(i, 1)[0];
+          }
+        }
+      }
+
+      // Fallback: any non-active
       for (let i = 0; i < deck.length; i++) {
         if (!activeIndices.includes(deck[i])) {
           return deck.splice(i, 1)[0];
@@ -535,7 +593,7 @@ ${vision}
       const titleEl = frame.querySelector('.photo-tile__title');
       const figcaption = frame.querySelector('figcaption');
 
-      const nextPoolIdx = getNextRandomImage();
+      const nextPoolIdx = getNextRandomImage(frameIndex);
       activeIndices[frameIndex] = nextPoolIdx;
       const nextData = galleryPool[nextPoolIdx];
 
@@ -644,10 +702,10 @@ ${vision}
     if (!footerContainer || !footerImg) return;
 
     const footerImages = [
-      { src: 'assets/img/princess-izzy-10-femdom-gala.webp', alt: 'Princess Izzy — Athens Femdom Gala Red Carpet' },
-      { src: 'assets/img/princess-izzy-51-good-boy.webp', alt: 'Princess Izzy — Sovereign Dominatrix' },
-      { src: 'assets/img/princess-izzy-19-say-it-back.webp', alt: 'Princess Izzy — Black Lingerie Allure' },
-      { src: 'assets/img/princess-izzy-34-worship-me.webp', alt: 'Princess Izzy — High Heel Domination & Leash' }
+      { src: 'assets/img/princess-izzy-set1-01-patent-mirror.webp', alt: 'Princess Izzy — Patent Bodysuit & Mirror' },
+      { src: 'assets/img/princess-izzy-set2-01-bronze-chesterfield.webp', alt: 'Princess Izzy — Bronze Chesterfield' },
+      { src: 'assets/img/princess-izzy-set3-02-pink-tulle-empress.webp', alt: 'Princess Izzy — Pink Tulle Empress' },
+      { src: 'assets/img/princess-izzy-set4-01-boucle-dominance.webp', alt: 'Princess Izzy — Bouclé Dominance' }
     ];
 
     let currentIdx = parseInt(localStorage.getItem('izzy_footer_img_index'), 10);
