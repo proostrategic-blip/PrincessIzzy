@@ -25,7 +25,13 @@
   <link rel="apple-touch-icon" href="assets/img/mark.svg">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="assets/css/styles.css?v=3.5">
+  <link rel="stylesheet" href="assets/css/styles.css?v=3.6">
+
+  <!-- High-Priority Critical LCP Image Preload -->
+  <link rel="preload" as="image" href="assets/img/princess-izzy-set4-03-red-bottoms.webp"
+        imagesrcset="assets/img/princess-izzy-set4-03-red-bottoms-480w.webp 480w, assets/img/princess-izzy-set4-03-red-bottoms.webp 851w"
+        imagesizes="(max-width: 640px) 100vw, 600px"
+        fetchpriority="high">
 
   <!-- Immediate Zero-Flash Age Gate & JS Detection Setup -->
   <script>
@@ -86,7 +92,7 @@
         This is an adult space. You must be 18 or older to enter Princess Izzy’s world.
       </p>
       <div class="age-gate__consent" style="margin-bottom: 18px; padding: 10px 14px; background: rgba(10, 10, 11, 0.72); border: 1px solid rgba(197, 160, 89, 0.4); border-radius: 8px; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);">
-        <span class="consent-pill" style="font-size: 0.76rem; color: rgba(255, 255, 255, 0.9); display: block; line-height: 1.4; text-shadow: 0 1px 4px rgba(0,0,0,0.8);">🛡️ Essential Cookies &amp; 18+ Verification Only &middot; Zero Ad Tracking</span>
+        <span class="consent-pill" style="font-size: 0.75rem; color: rgba(255, 255, 255, 0.9); display: block; line-height: 1.4; text-shadow: 0 1px 4px rgba(0,0,0,0.8);">🛡️ Essential Cookies &amp; 18+ Verification Only &middot; Zero Ad Tracking</span>
       </div>
       <div class="age-gate__actions">
         <button class="btn btn-primary btn-block age-gate__btn-enter" data-age-enter type="button">
@@ -118,6 +124,7 @@
           <ul class="desktop-nav__list">
             <li><a href="#about" class="nav-link">My Rules</a></li>
             <li><a href="#lookbook" class="nav-link">The Archive</a></li>
+            <li><a href="#services" class="nav-link">Menu &amp; Rates</a></li>
             <li><a href="#links" class="nav-link">Tribute</a></li>
             <li>
               <a href="https://x.com/queenizzyfeet" target="_blank" rel="noopener noreferrer" class="nav-link nav-link--ext">
@@ -163,6 +170,7 @@
             <li><a href="#hero">The Boss</a></li>
             <li><a href="#about">My Rules</a></li>
             <li><a href="#lookbook">The Archive</a></li>
+            <li><a href="#services">Menu &amp; Rates</a></li>
             <li><a href="#links">Pay Me</a></li>
             <li><a href="#book">Make a Request</a></li>
           </ul>
@@ -196,8 +204,24 @@
           <div class="hero__media-wrapper">
             <div class="hero__media-frame" id="heroMediaFrame">
               <div class="hero__slides-track" id="heroSlidesTrack">
-                <img src="assets/img/princess-izzy-set4-03-red-bottoms.webp" alt="Princess Izzy — Red Bottom Stilettos" class="hero__media-img is-active" id="heroPrimaryImg" width="600" height="750" loading="eager">
-                <img src="assets/img/princess-izzy-set2-02-billiard-sovereign.webp" alt="Princess Izzy — Billiard Sovereign" class="hero__media-img" id="heroSecondaryImg" width="600" height="750" aria-hidden="true" decoding="async">
+                <img src="assets/img/princess-izzy-set4-03-red-bottoms.webp"
+                     srcset="assets/img/princess-izzy-set4-03-red-bottoms-480w.webp 480w, assets/img/princess-izzy-set4-03-red-bottoms.webp 851w"
+                     sizes="(max-width: 640px) 100vw, 600px"
+                     alt="Princess Izzy — Red Bottom Stilettos"
+                     class="hero__media-img is-active"
+                     id="heroPrimaryImg"
+                     width="600" height="750"
+                     loading="eager"
+                     fetchpriority="high"
+                     decoding="async">
+                <img src="assets/img/princess-izzy-set2-02-billiard-sovereign.webp"
+                     alt="Princess Izzy — Billiard Sovereign"
+                     class="hero__media-img"
+                     id="heroSecondaryImg"
+                     width="600" height="750"
+                     aria-hidden="true"
+                     loading="lazy"
+                     decoding="async">
               </div>
               <div class="hero__media-caption">
                 <span class="hero__media-caption-title">Princess Izzy</span>
@@ -242,7 +266,13 @@
         </div>
 
         <div class="lookbook-banner" data-reveal>
-          <img src="assets/img/princess-izzy-09-russian-allure.webp" alt="Princess Izzy — Russian Allure" loading="lazy" width="1600" height="1064">
+          <img src="assets/img/princess-izzy-09-russian-allure.webp"
+               srcset="assets/img/princess-izzy-09-russian-allure-768w.webp 768w, assets/img/princess-izzy-09-russian-allure.webp 1440w"
+               sizes="(max-width: 768px) 100vw, 1200px"
+               alt="Princess Izzy — Russian Allure"
+               loading="lazy"
+               decoding="async"
+               width="1440" height="960">
           <div class="lookbook-banner__shade"></div>
           <div class="lookbook-banner__copy">
             <span class="lookbook-banner__label">Humiliation specialist</span>
@@ -250,14 +280,14 @@
           </div>
         </div>
 
-                <div class="photo-gallery-stack" id="galleryRail" aria-label="Selected photos of Princess Izzy">
+        <div class="photo-gallery-stack" id="galleryRail" aria-label="Selected photos of Princess Izzy">
           <!-- ================= ROW 1 ================= -->
           <div class="photo-rail" aria-label="Archive Gallery Row 1">
             <!-- Frame 1: Uniform Editorial Portrait -->
             <figure class="photo-tile" data-reveal data-frame="0" title="Click to view next photo">
               <div class="photo-tile__stage">
-                <img src="assets/img/princess-izzy-18-perfect-timing.webp" alt="Princess Izzy — Perfect Timing" class="photo-tile__img is-active" width="1200" height="1600" loading="eager">
-                <img src="" alt="" class="photo-tile__img" width="1200" height="1600" aria-hidden="true" decoding="async">
+                <img src="assets/img/princess-izzy-18-perfect-timing.webp" alt="Princess Izzy — Perfect Timing" class="photo-tile__img is-active" width="750" height="1000" loading="lazy" decoding="async">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 4'%3E%3C/svg%3E" alt="" class="photo-tile__img" width="750" height="1000" aria-hidden="true" decoding="async">
               </div>
               <figcaption>
                 <span class="photo-tile__idx">18</span>
@@ -268,8 +298,8 @@
             <!-- Frame 2: Uniform Editorial Portrait -->
             <figure class="photo-tile" data-reveal data-frame="1" title="Click to view next photo">
               <div class="photo-tile__stage">
-                <img src="assets/img/princess-izzy-04-pure-allure.webp" alt="Princess Izzy — Pure Allure" class="photo-tile__img is-active" width="1200" height="1600" loading="eager">
-                <img src="" alt="" class="photo-tile__img" width="1200" height="1600" aria-hidden="true" decoding="async">
+                <img src="assets/img/princess-izzy-04-pure-allure.webp" alt="Princess Izzy — Pure Allure" class="photo-tile__img is-active" width="750" height="1000" loading="lazy" decoding="async">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 4'%3E%3C/svg%3E" alt="" class="photo-tile__img" width="750" height="1000" aria-hidden="true" decoding="async">
               </div>
               <figcaption>
                 <span class="photo-tile__idx">04</span>
@@ -280,8 +310,8 @@
             <!-- Frame 3: Uniform Editorial Portrait -->
             <figure class="photo-tile" data-reveal data-frame="2" title="Click to view next photo">
               <div class="photo-tile__stage">
-                <img src="assets/img/princess-izzy-47-serve-princess-feet.webp" alt="Princess Izzy — Serve Princess Feet" class="photo-tile__img is-active" width="1200" height="1600" loading="eager">
-                <img src="" alt="" class="photo-tile__img" width="1200" height="1600" aria-hidden="true" decoding="async">
+                <img src="assets/img/princess-izzy-47-serve-princess-feet.webp" alt="Princess Izzy — Serve Princess Feet" class="photo-tile__img is-active" width="750" height="1000" loading="lazy" decoding="async">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 4'%3E%3C/svg%3E" alt="" class="photo-tile__img" width="750" height="1000" aria-hidden="true" decoding="async">
               </div>
               <figcaption>
                 <span class="photo-tile__idx">47</span>
@@ -292,8 +322,8 @@
             <!-- Frame 4: Uniform Editorial Portrait (Set 2 Priority) -->
             <figure class="photo-tile" data-reveal data-frame="3" title="Click to view next photo">
               <div class="photo-tile__stage">
-                <img src="assets/img/princess-izzy-set2-02-billiard-sovereign.webp" alt="Princess Izzy — Billiard Sovereign" class="photo-tile__img is-active" width="1200" height="1600" loading="eager">
-                <img src="" alt="" class="photo-tile__img" width="1200" height="1600" aria-hidden="true" decoding="async">
+                <img src="assets/img/princess-izzy-set2-02-billiard-sovereign.webp" alt="Princess Izzy — Billiard Sovereign" class="photo-tile__img is-active" width="750" height="1000" loading="lazy" decoding="async">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 4'%3E%3C/svg%3E" alt="" class="photo-tile__img" width="750" height="1000" aria-hidden="true" decoding="async">
               </div>
               <figcaption>
                 <span class="photo-tile__idx">60</span>
@@ -307,8 +337,8 @@
             <!-- Frame 5: Uniform Editorial Portrait -->
             <figure class="photo-tile" data-reveal data-frame="4" title="Click to view next photo">
               <div class="photo-tile__stage">
-                <img src="assets/img/princess-izzy-05-face-card-unmatched.webp" alt="Princess Izzy — Face Card Unmatched" class="photo-tile__img is-active" width="1200" height="1600" loading="lazy">
-                <img src="" alt="" class="photo-tile__img" width="1200" height="1600" aria-hidden="true" decoding="async">
+                <img src="assets/img/princess-izzy-05-face-card-unmatched.webp" alt="Princess Izzy — Face Card Unmatched" class="photo-tile__img is-active" width="750" height="1000" loading="lazy" decoding="async">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 4'%3E%3C/svg%3E" alt="" class="photo-tile__img" width="750" height="1000" aria-hidden="true" decoding="async">
               </div>
               <figcaption>
                 <span class="photo-tile__idx">05</span>
@@ -319,8 +349,8 @@
             <!-- Frame 6: Uniform Editorial Portrait (Set 4 Priority) -->
             <figure class="photo-tile" data-reveal data-frame="5" title="Click to view next photo">
               <div class="photo-tile__stage">
-                <img src="assets/img/princess-izzy-set4-02-chain-harness.webp" alt="Princess Izzy — Chain Harness Allure" class="photo-tile__img is-active" width="1200" height="1600" loading="lazy">
-                <img src="" alt="" class="photo-tile__img" width="1200" height="1600" aria-hidden="true" decoding="async">
+                <img src="assets/img/princess-izzy-set4-02-chain-harness.webp" alt="Princess Izzy — Chain Harness Allure" class="photo-tile__img is-active" width="750" height="1000" loading="lazy" decoding="async">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 4'%3E%3C/svg%3E" alt="" class="photo-tile__img" width="750" height="1000" aria-hidden="true" decoding="async">
               </div>
               <figcaption>
                 <span class="photo-tile__idx">68</span>
@@ -331,8 +361,8 @@
             <!-- Frame 7: Uniform Editorial Portrait -->
             <figure class="photo-tile" data-reveal data-frame="6" title="Click to view next photo">
               <div class="photo-tile__stage">
-                <img src="assets/img/princess-izzy-43-paid-princess.webp" alt="Princess Izzy — Paid Princess" class="photo-tile__img is-active" width="1200" height="1600" loading="lazy">
-                <img src="" alt="" class="photo-tile__img" width="1200" height="1600" aria-hidden="true" decoding="async">
+                <img src="assets/img/princess-izzy-43-paid-princess.webp" alt="Princess Izzy — Paid Princess" class="photo-tile__img is-active" width="750" height="1000" loading="lazy" decoding="async">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 4'%3E%3C/svg%3E" alt="" class="photo-tile__img" width="750" height="1000" aria-hidden="true" decoding="async">
               </div>
               <figcaption>
                 <span class="photo-tile__idx">43</span>
@@ -343,8 +373,8 @@
             <!-- Frame 8: Uniform Editorial Portrait (Set 1 Priority) -->
             <figure class="photo-tile" data-reveal data-frame="7" title="Click to view next photo">
               <div class="photo-tile__stage">
-                <img src="assets/img/princess-izzy-set1-04-boots-domination.webp" alt="Princess Izzy — Patent Boots Domination" class="photo-tile__img is-active" width="1200" height="1600" loading="lazy">
-                <img src="" alt="" class="photo-tile__img" width="1200" height="1600" aria-hidden="true" decoding="async">
+                <img src="assets/img/princess-izzy-set1-04-boots-domination.webp" alt="Princess Izzy — Patent Boots Domination" class="photo-tile__img is-active" width="750" height="1000" loading="lazy" decoding="async">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 4'%3E%3C/svg%3E" alt="" class="photo-tile__img" width="750" height="1000" aria-hidden="true" decoding="async">
               </div>
               <figcaption>
                 <span class="photo-tile__idx">58</span>
@@ -358,8 +388,8 @@
             <!-- Frame 9: Uniform Editorial Portrait -->
             <figure class="photo-tile" data-reveal data-frame="8" title="Click to view next photo">
               <div class="photo-tile__stage">
-                <img src="assets/img/princess-izzy-20-please-your-princess.webp" alt="Princess Izzy — Please Your Princess" class="photo-tile__img is-active" width="1200" height="1600" loading="lazy">
-                <img src="" alt="" class="photo-tile__img" width="1200" height="1600" aria-hidden="true" decoding="async">
+                <img src="assets/img/princess-izzy-20-please-your-princess.webp" alt="Princess Izzy — Please Your Princess" class="photo-tile__img is-active" width="750" height="1000" loading="lazy" decoding="async">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 4'%3E%3C/svg%3E" alt="" class="photo-tile__img" width="750" height="1000" aria-hidden="true" decoding="async">
               </div>
               <figcaption>
                 <span class="photo-tile__idx">20</span>
@@ -370,8 +400,8 @@
             <!-- Frame 10: Uniform Editorial Portrait (Set 3 Priority) -->
             <figure class="photo-tile" data-reveal data-frame="9" title="Click to view next photo">
               <div class="photo-tile__stage">
-                <img src="assets/img/princess-izzy-set3-02-pink-tulle-empress.webp" alt="Princess Izzy — Pink Tulle Empress" class="photo-tile__img is-active" width="1200" height="1600" loading="lazy">
-                <img src="" alt="" class="photo-tile__img" width="1200" height="1600" aria-hidden="true" decoding="async">
+                <img src="assets/img/princess-izzy-set3-02-pink-tulle-empress.webp" alt="Princess Izzy — Pink Tulle Empress" class="photo-tile__img is-active" width="750" height="1000" loading="lazy" decoding="async">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 4'%3E%3C/svg%3E" alt="" class="photo-tile__img" width="750" height="1000" aria-hidden="true" decoding="async">
               </div>
               <figcaption>
                 <span class="photo-tile__idx">66</span>
@@ -382,8 +412,8 @@
             <!-- Frame 11: Uniform Editorial Portrait -->
             <figure class="photo-tile" data-reveal data-frame="10" title="Click to view next photo">
               <div class="photo-tile__stage">
-                <img src="assets/img/princess-izzy-11-pink-long-toes.webp" alt="Princess Izzy — Pink Long Toes" class="photo-tile__img is-active" width="1200" height="1600" loading="lazy">
-                <img src="" alt="" class="photo-tile__img" width="1200" height="1600" aria-hidden="true" decoding="async">
+                <img src="assets/img/princess-izzy-11-pink-long-toes.webp" alt="Princess Izzy — Pink Long Toes" class="photo-tile__img is-active" width="750" height="1000" loading="lazy" decoding="async">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 4'%3E%3C/svg%3E" alt="" class="photo-tile__img" width="750" height="1000" aria-hidden="true" decoding="async">
               </div>
               <figcaption>
                 <span class="photo-tile__idx">11</span>
@@ -394,8 +424,8 @@
             <!-- Frame 12: Uniform Editorial Portrait -->
             <figure class="photo-tile" data-reveal data-frame="11" title="Click to view next photo">
               <div class="photo-tile__stage">
-                <img src="assets/img/princess-izzy-51-good-boy.webp" alt="Princess Izzy — Good Boy" class="photo-tile__img is-active" width="1200" height="1600" loading="lazy">
-                <img src="" alt="" class="photo-tile__img" width="1200" height="1600" aria-hidden="true" decoding="async">
+                <img src="assets/img/princess-izzy-51-good-boy.webp" alt="Princess Izzy — Good Boy" class="photo-tile__img is-active" width="750" height="1000" loading="lazy" decoding="async">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 4'%3E%3C/svg%3E" alt="" class="photo-tile__img" width="750" height="1000" aria-hidden="true" decoding="async">
               </div>
               <figcaption>
                 <span class="photo-tile__idx">51</span>
@@ -428,8 +458,130 @@
     <!-- ========================================================================
          OFFICIAL LINKS & CHANNELS (3x3 Grid)
          ======================================================================== -->
-    
 
+    <!-- ========================================================================
+         OFFICIAL SERVICE MENU & PRICING (Princess Izzy's Female Domination)
+         ======================================================================== -->
+    <section class="section section--border-top" id="services" style="padding-top: 80px; padding-bottom: 80px;">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="text-eyebrow">Tariffs &amp; Offerings</span>
+          <h2 class="text-editorial-title">Princess Izzy’s <em>Menu</em></h2>
+          <p class="text-body-muted" style="max-width: 680px; margin-inline: auto;">
+            Only upfront payment. Verified channels: PayPal, LoyalFans, OnlyFans, Throne. Unpaid inquiries receive zero attention.
+          </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-top: 40px;" data-reveal>
+          
+          <!-- Card 1: Chastity, Locktober & Gooners -->
+          <div class="milky-card" style="padding: 28px 24px; border: 1px solid rgba(197, 160, 89, 0.35); background: rgba(18, 18, 21, 0.85); backdrop-filter: blur(12px); border-radius: 12px;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 16px; border-bottom: 1px solid rgba(197, 160, 89, 0.2); padding-bottom: 12px;">
+              <h3 style="font-family: var(--font-display); font-size: 1.25rem; color: #ECC880; letter-spacing: 0.08em; text-transform: uppercase;">Chastity &amp; Gooners</h3>
+              <span style="font-size: 0.72rem; color: #DFBF7A; letter-spacing: 0.1em; text-transform: uppercase;">Keyholder</span>
+            </div>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 14px; font-size: 0.9rem; color: rgba(255, 255, 255, 0.88);">
+              <li style="display: flex; justify-content: space-between; align-items: center;">
+                <span><strong>Locktober &amp; Chastity Supervision</strong> <small style="display:block; color:rgba(255,255,255,0.6); font-size:0.75rem;">Daily cage checks &amp; strict denial</small></span>
+                <span style="color:#ECC880; font-weight:600; font-family:var(--font-mono); white-space:nowrap; flex-shrink:0; margin-left:12px;">50€ / wk</span>
+              </li>
+              <li style="display: flex; justify-content: space-between; align-items: center;">
+                <span>Optional Key Keeper custody add-on</span>
+                <span style="color:#DFBF7A; font-weight:600; font-family:var(--font-mono); white-space:nowrap; flex-shrink:0; margin-left:12px;">+25€</span>
+              </li>
+              <li style="display: flex; justify-content: space-between; align-items: center;">
+                <span><strong>Gooner Drain &amp; Sissy Education</strong> <small style="display:block; color:rgba(255,255,255,0.6); font-size:0.75rem;">Hypno drain, ruin commands &amp; discipline</small></span>
+                <span style="color:#ECC880; font-weight:600; font-family:var(--font-mono); white-space:nowrap; flex-shrink:0; margin-left:12px;">50€ / wk</span>
+              </li>
+              <li style="display: flex; justify-content: space-between; align-items: center;">
+                <span>Ball Busting (CBT) &amp; Humiliation</span>
+                <span style="color:#ECC880; font-weight:600; font-family:var(--font-mono); white-space:nowrap; flex-shrink:0; margin-left:12px;">Custom</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Card 2: Live Sessions -->
+          <div class="milky-card" style="padding: 28px 24px; border: 1px solid rgba(197, 160, 89, 0.35); background: rgba(18, 18, 21, 0.85); backdrop-filter: blur(12px); border-radius: 12px;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 16px; border-bottom: 1px solid rgba(197, 160, 89, 0.2); padding-bottom: 12px;">
+              <h3 style="font-family: var(--font-display); font-size: 1.25rem; color: #ECC880; letter-spacing: 0.08em; text-transform: uppercase;">Live Sessions</h3>
+              <span style="font-size: 0.72rem; color: #DFBF7A; letter-spacing: 0.1em; text-transform: uppercase;">Real-Time</span>
+            </div>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 14px; font-size: 0.9rem; color: rgba(255, 255, 255, 0.88);">
+              <li style="display: flex; justify-content: space-between; align-items: center;">
+                <span><strong>Video Call Domination</strong> <small style="display:block; color:rgba(255,255,255,0.6); font-size:0.75rem;">1-on-1 ball busting commands, pissing &amp; cage checks</small></span>
+                <span style="color:#ECC880; font-weight:600; font-family:var(--font-mono); white-space:nowrap; flex-shrink:0; margin-left:12px;">20€ / min</span>
+              </li>
+              <li style="display: flex; justify-content: space-between; align-items: center;">
+                <span><strong>Chat Session 🔥 (30 min)</strong> <small style="display:block; color:rgba(255,255,255,0.6); font-size:0.75rem;">Gooner teasing with voice, pictures &amp; video clips</small></span>
+                <span style="color:#ECC880; font-weight:600; font-family:var(--font-mono); white-space:nowrap; flex-shrink:0; margin-left:12px;">100€</span>
+              </li>
+              <li style="display: flex; justify-content: space-between; align-items: center;">
+                <span>Custom Video (Piss / CBT / Scat)</span>
+                <span style="color:#ECC880; font-weight:600; font-family:var(--font-mono); white-space:nowrap; flex-shrink:0; margin-left:12px;">20–25€ / min</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Card 3: Ratings & Media -->
+          <div class="milky-card" style="padding: 28px 24px; border: 1px solid rgba(197, 160, 89, 0.35); background: rgba(18, 18, 21, 0.85); backdrop-filter: blur(12px); border-radius: 12px;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 16px; border-bottom: 1px solid rgba(197, 160, 89, 0.2); padding-bottom: 12px;">
+              <h3 style="font-family: var(--font-display); font-size: 1.25rem; color: #ECC880; letter-spacing: 0.08em; text-transform: uppercase;">Dick Ratings &amp; SPH</h3>
+              <span style="font-size: 0.72rem; color: #DFBF7A; letter-spacing: 0.1em; text-transform: uppercase;">Brutal Truth</span>
+            </div>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 14px; font-size: 0.9rem; color: rgba(255, 255, 255, 0.88);">
+              <li style="display: flex; justify-content: space-between; align-items: center;">
+                <span>Caged / Soft Rating per Text</span>
+                <span style="color:#ECC880; font-weight:600; font-family:var(--font-mono); white-space:nowrap; flex-shrink:0; margin-left:12px;">30€</span>
+              </li>
+              <li style="display: flex; justify-content: space-between; align-items: center;">
+                <span>Gooner Rating per Voice Message</span>
+                <span style="color:#ECC880; font-weight:600; font-family:var(--font-mono); white-space:nowrap; flex-shrink:0; margin-left:12px;">50€</span>
+              </li>
+              <li style="display: flex; justify-content: space-between; align-items: center;">
+                <span>Rating per Video Breakdown</span>
+                <span style="color:#ECC880; font-weight:600; font-family:var(--font-mono); white-space:nowrap; flex-shrink:0; margin-left:12px;">75€</span>
+              </li>
+              <li style="display: flex; justify-content: space-between; align-items: center;">
+                <span>Exclusive Pictures (5 pcs)</span>
+                <span style="color:#ECC880; font-weight:600; font-family:var(--font-mono); white-space:nowrap; flex-shrink:0; margin-left:12px;">50€</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Card 4: Worn Relics & Textiles -->
+          <div class="milky-card" style="padding: 28px 24px; border: 1px solid rgba(197, 160, 89, 0.35); background: rgba(18, 18, 21, 0.85); backdrop-filter: blur(12px); border-radius: 12px;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 16px; border-bottom: 1px solid rgba(197, 160, 89, 0.2); padding-bottom: 12px;">
+              <h3 style="font-family: var(--font-display); font-size: 1.25rem; color: #ECC880; letter-spacing: 0.08em; text-transform: uppercase;">Worn Items</h3>
+              <span style="font-size: 0.72rem; color: #DFBF7A; letter-spacing: 0.1em; text-transform: uppercase;">Scent &amp; Nylons</span>
+            </div>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 14px; font-size: 0.9rem; color: rgba(255, 255, 255, 0.88);">
+              <li style="display: flex; justify-content: space-between; align-items: center;">
+                <span>Worn Socks (1 Day)</span>
+                <span style="color:#ECC880; font-weight:600; font-family:var(--font-mono); white-space:nowrap; flex-shrink:0; margin-left:12px;">35€</span>
+              </li>
+              <li style="display: flex; justify-content: space-between; align-items: center;">
+                <span>... + additional day (each)</span>
+                <span style="color:#DFBF7A; font-weight:600; font-family:var(--font-mono); white-space:nowrap; flex-shrink:0; margin-left:12px;">+20€</span>
+              </li>
+              <li style="display: flex; justify-content: space-between; align-items: center;">
+                <span>... + written with your name</span>
+                <span style="color:#DFBF7A; font-weight:600; font-family:var(--font-mono); white-space:nowrap; flex-shrink:0; margin-left:12px;">+50€</span>
+              </li>
+              <li style="display: flex; justify-content: space-between; align-items: center;">
+                <span>Worn Tights (Nylon / Net)</span>
+                <span style="color:#ECC880; font-weight:600; font-family:var(--font-mono); white-space:nowrap; flex-shrink:0; margin-left:12px;">60€</span>
+              </li>
+              <li style="display: flex; justify-content: space-between; align-items: center;">
+                <span>Worn Dessous / Lingerie (1 Day)</span>
+                <span style="color:#ECC880; font-weight:600; font-family:var(--font-mono); white-space:nowrap; flex-shrink:0; margin-left:12px;">120€</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
 
     <section class="section section--border-top" id="links">
       <div class="container">
@@ -623,7 +775,13 @@
     </section>
 
     <section class="session-banner" aria-label="Financial domination invitation" data-reveal>
-      <img src="assets/img/princess-izzy-38-human-furniture.webp" alt="Princess Izzy — Human Furniture" loading="lazy" width="1600" height="1200">
+      <img src="assets/img/princess-izzy-38-human-furniture.webp"
+           srcset="assets/img/princess-izzy-38-human-furniture-768w.webp 768w, assets/img/princess-izzy-38-human-furniture.webp 1440w"
+           sizes="(max-width: 768px) 100vw, 1200px"
+           alt="Princess Izzy — Human Furniture"
+           loading="lazy"
+           decoding="async"
+           width="1440" height="1080">
       <div class="session-banner__shade"></div>
       <div class="session-banner__copy container">
         <span class="lookbook-banner__label">Financial dominatrix</span>
@@ -680,7 +838,7 @@
     <div class="container">
       <div class="footer-top">
         <div class="footer-photo" id="footer-photo" title="Princess Izzy — Click to reveal next look" role="button" tabindex="0" aria-label="Princess Izzy photo — click to change look">
-          <img id="footer-dynamic-img" src="assets/img/princess-izzy-set1-01-patent-mirror.webp" alt="Princess Izzy — Patent Bodysuit &amp; Mirror" loading="lazy" width="1200" height="1600">
+          <img id="footer-dynamic-img" src="assets/img/princess-izzy-set1-01-patent-mirror.webp" alt="Princess Izzy — Patent Bodysuit &amp; Mirror" loading="lazy" decoding="async" width="851" height="1280">
           <script>
             (function () {
               try {
@@ -712,6 +870,7 @@
           <a href="#hero">The Boss</a>
           <a href="#about">My Rules</a>
           <a href="#lookbook">The Archive</a>
+          <a href="#services">Menu &amp; Rates</a>
           <a href="#links">Pay Me</a>
           <a href="#book">Make a Request</a>
           <a href="https://x.com/queenizzyfeet" target="_blank" rel="noopener noreferrer">Find Me on X ↗</a>
@@ -738,6 +897,6 @@
   </footer>
 
   <!-- Core JavaScript -->
-  <script src="assets/js/main.js?v=3.3"></script>
+  <script src="assets/js/main.js?v=3.4"></script>
 </body>
 </html>
