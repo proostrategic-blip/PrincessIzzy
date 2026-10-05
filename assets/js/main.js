@@ -627,6 +627,61 @@ ${vision}
   };
 
   // --------------------------------------------------------------------------
+  // 8. FOOTER IMAGE ROTATION (Per-refresh sequence + interactive reveal)
+  // --------------------------------------------------------------------------
+  const initFooterImageRotation = () => {
+    const footerContainer = getEl('#footer-photo');
+    const footerImg = getEl('#footer-dynamic-img');
+    if (!footerContainer || !footerImg) return;
+
+    const footerImages = [
+      { src: 'assets/img/princess-izzy-10-femdom-gala.webp', alt: 'Princess Izzy — Athens Femdom Gala Red Carpet' },
+      { src: 'assets/img/princess-izzy-51-good-boy.webp', alt: 'Princess Izzy — Sovereign Dominatrix' },
+      { src: 'assets/img/princess-izzy-19-say-it-back.webp', alt: 'Princess Izzy — Black Lingerie Allure' },
+      { src: 'assets/img/princess-izzy-34-worship-me.webp', alt: 'Princess Izzy — High Heel Domination & Leash' }
+    ];
+
+    let currentIdx = parseInt(localStorage.getItem('izzy_footer_img_index'), 10);
+    if (isNaN(currentIdx) || currentIdx < 0 || currentIdx >= footerImages.length) {
+      currentIdx = 0;
+    }
+
+    const setFooterImage = (index, animated = false) => {
+      currentIdx = (index + footerImages.length) % footerImages.length;
+      try {
+        localStorage.setItem('izzy_footer_img_index', currentIdx);
+      } catch (e) {}
+
+      const item = footerImages[currentIdx];
+      if (animated) {
+        footerImg.style.opacity = '0';
+        footerImg.style.transform = 'scale(0.98)';
+        setTimeout(() => {
+          footerImg.src = item.src;
+          footerImg.alt = item.alt;
+          footerImg.style.opacity = '1';
+          footerImg.style.transform = 'scale(1)';
+        }, 180);
+      } else {
+        footerImg.src = item.src;
+        footerImg.alt = item.alt;
+      }
+    };
+
+    // Interactive click and keyboard activation to cycle to next photo
+    on(footerContainer, 'click', () => {
+      setFooterImage(currentIdx + 1, true);
+    });
+
+    on(footerContainer, 'keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        setFooterImage(currentIdx + 1, true);
+      }
+    });
+  };
+
+  // --------------------------------------------------------------------------
   // BOOTSTRAP
   // --------------------------------------------------------------------------
   document.addEventListener('DOMContentLoaded', () => {
@@ -637,5 +692,6 @@ ${vision}
     initBookingSystem();
     initHeroImageSwitcher();
     initGalleryFrameRotator();
+    initFooterImageRotation();
   });
 })();
