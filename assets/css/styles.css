@@ -1179,12 +1179,18 @@ ul, ol {
   opacity: 0.9;
 }
 
+.photo-gallery-stack {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(48px, 7vw, 92px);
+  margin-top: clamp(18px, 3vw, 36px);
+}
+
 .photo-rail {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: clamp(10px, 1.5vw, 20px);
   align-items: start;
-  margin-top: clamp(18px, 3vw, 36px);
 }
 
 .photo-tile {
@@ -1464,6 +1470,11 @@ ul, ol {
 
   .lookbook-banner__copy h3 {
     font-size: clamp(2.8rem, 14vw, 4.5rem);
+  }
+
+  .photo-gallery-stack {
+    gap: clamp(36px, 8vw, 54px);
+    margin-top: 24px;
   }
 
   .photo-rail {

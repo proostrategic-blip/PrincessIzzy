@@ -499,7 +499,11 @@ ${vision}
       img.src = item.src;
     });
 
-    const activeIndices = [4, 32, 42, 10]; // Frame 0 -> 05, Frame 1 -> 33, Frame 2 -> 43, Frame 3 -> 11
+    const activeIndices = [
+      17, 3, 46, 9,   // Row 1: 18 (Perfect Timing), 04 (Pure Allure), 47 (Serve Princess Feet), 10 (Femdom Gala)
+      4, 32, 42, 14,  // Row 2: 05 (Face Card Unmatched), 33 (Arch Perfection), 43 (Paid Princess), 15 (Soft Soles)
+      19, 37, 10, 50  // Row 3: 20 (Please Your Princess), 38 (Human Furniture), 11 (Pink Long Toes), 51 (Good Boy)
+    ];
     let deck = [];
 
     const getNextRandomImage = () => {
@@ -561,11 +565,16 @@ ${vision}
       tempImg.src = nextData.src;
     };
 
-    // Cycle every 6.5 seconds (6500ms) with randomized organic stagger
+    // Cycle every 6.5 seconds (6500ms) with randomized organic stagger across 2-3 frames
     const cycleGallery = () => {
       if (document.hidden) return;
 
-      frames.forEach((_, fIdx) => {
+      const numToRotate = Math.min(3, Math.max(2, Math.floor(frames.length / 4)));
+      const shuffledIndices = Array.from({ length: frames.length }, (_, i) => i)
+        .sort(() => Math.random() - 0.5)
+        .slice(0, numToRotate);
+
+      shuffledIndices.forEach((fIdx) => {
         const stagger = Math.floor(Math.random() * 800);
         setTimeout(() => {
           if (!document.hidden) {
