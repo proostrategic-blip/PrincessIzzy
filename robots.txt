@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://princess-lizzlane.netlify.app/sitemap.xml
+Sitemap: https://princess-izzy.netlify.app/sitemap.xml
